@@ -9,7 +9,6 @@ import com.i2f.springboot.service.UserService;
 import com.itextpdf.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -31,7 +30,7 @@ public class UserController {
     PdfService pdfService;
     @RequestMapping("toUserPage")
     public String toUser(@RequestBody String name){
- List<User> list = new ArrayList<>();
+        List<User> list = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             User user = new User("张三"+i,String.valueOf(i));
             list.add(user);
