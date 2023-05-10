@@ -1,0 +1,53 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/i2_finance_demo
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+  devtools:
+    restart:
+      enabled: true #启用热部署
+      additional-paths: src/main/java #指定热部署的目录
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  #配置视图解析器
+  thymeleaf:
+    suffix: .html
+    prefix: classpath:/templates/
+    cache: false #关闭缓存,方便修改页面
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+  #配置redis
+  redis:
+    host: localhost
+    port: 6379
+    lettuce:
+      pool:
+        min-idle: 0 #数据库连接池最小连接数
+        max-active: 10 #连接池最大连接数
+        max-wait: -1ms #连接池最大阻塞等待时间（负数就表示没有限制）
+        max-idle: 8
+    timeout: 10000ms #连接超时时间
+  elasticsearch:
+    rest:
+      # 是否启用es
+      enable: false
+      uris: 81.70.62.181:9200
+      username: elastic
+      password: mjw123456
+mybatis:
+  mapper-locations: classpath:/mybatis/*Mapper.xml
+  type-aliases-package: com.i2f.springboot.entity
+
+#logging:
+#  level: debug
+#  file:
+#    path: ./logs
